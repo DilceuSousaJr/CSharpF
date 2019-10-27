@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Bebidas.ConsoleApp.Classes;
+
 namespace Bebidas.ConsoleApp
 {
     class Program
@@ -12,31 +14,37 @@ namespace Bebidas.ConsoleApp
         {
             Console.WriteLine("************  Loja de bebidas *************");
             Console.WriteLine("Bem vindo a Loja");
+            
 
-            List<string> listaClientes = new List<string>();
 
+            Dados dados = new Dados();
             for(int i=0; i<5; i++)
             {
-                string nc =CadastrarCliente();
-                listaClientes.Add(nc);
+                Pessoa p = CadastrarCliente();
+                dados.Salvar(p);
             }
-            foreach (string item in listaClientes)
+
+            List<Pessoa> listaClientes = dados.LerTodos();
+
+            foreach (Pessoa item in listaClientes)
             { 
-                Console.WriteLine($" Nome: {item} !");
+                Console.WriteLine($" Nome completo: {item.Nome} {item.Sobrenome}");
             }
             
             Console.ReadKey();
         }
-        static string CadastrarCliente()
+        static Pessoa CadastrarCliente()
         {
-            Console.Write("Digite o seu nomeasdsa: ");
-            string nome = Console.ReadLine();
+            Pessoa pessoa1 = new Pessoa();
+
+            Console.Write("Digite o seu nome: ");
+            pessoa1.Nome = Console.ReadLine();
             Console.Write("Digite o seu sobrenome: ");
-            string sobrenome = Console.ReadLine();
+            pessoa1.Sobrenome = Console.ReadLine();
 
-            string nomeCompleto = $"{nome} {sobrenome}";
+            //string nomeCompleto = $"{pessoa1.Nome} {pessoa1.Sobrenome}";
 
-            return nomeCompleto;
+            return pessoa1;
         }
     }
 }
