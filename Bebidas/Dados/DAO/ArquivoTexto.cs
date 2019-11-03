@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bebidas.ConsoleApp.Classes
+namespace Dados.Modelo.DAO
 {
-    public class Dados
+    public class ArquivoTexto
     {
         string caminho = @"C:\CSFundamentos\Pessoas.txt";
-        
+
         #region Metodos
         public void Salvar(Pessoa pessoa)
         {
@@ -23,7 +23,7 @@ namespace Bebidas.ConsoleApp.Classes
             List<Pessoa> lista = new List<Pessoa>();
             StreamReader arquivo = File.OpenText(caminho);
             while (arquivo.EndOfStream != true)
-	        {
+            {
                 string linha = arquivo.ReadLine();
                 string[] linhaQuebrada = linha.Split(';');
 
@@ -32,13 +32,13 @@ namespace Bebidas.ConsoleApp.Classes
                 pessoa.Sobrenome = linhaQuebrada[1];
 
                 lista.Add(pessoa);
-            
+
             }
             arquivo.Close();
             return lista;
 
         }
-
         #endregion
     }
+
 }

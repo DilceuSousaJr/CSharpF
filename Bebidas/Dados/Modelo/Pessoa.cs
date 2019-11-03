@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bebidas.ConsoleApp.Classes
+namespace Dados.Modelo
 {
     public class Pessoa
     {
@@ -13,11 +13,13 @@ namespace Bebidas.ConsoleApp.Classes
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
 
+        public string CPF { get; set; }
+
         #endregion
         #region metodos
         public override string ToString()
         {
-            return $"{Nome};{Sobrenome}";
+            return $"{Nome};{Sobrenome};{CPF}";
         }
         #endregion
     }
